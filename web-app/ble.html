@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetooth Device Filter</title>
+</head>
+<body>
+    <h1>Bluetooth Device Filter</h1>
+    <form id="deviceForm">
+        <label for="macAddress">Enter a MAC address (12 characters, 0-9, A-F):</label>
+        <input type="text" id="macAddress" required maxlength="12" pattern="[0-9A-Fa-f]{12}">
+        <button type="submit">Search</button>
+    </form>
+    <p id="status"></p>
+
+    <script>
+        document.getElementById('deviceForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const macAddress = document.getElementById('macAddress').value.trim();
+            const status = document.getElementById('status');
+
+            // Validate MAC address format
+            const macRegex = /^[0-9A-Fa-f]{12}$/;
+            if (!macRegex.test(macAddress)) {
+                alert('Format error: Please enter a valid MAC address (12 characters, 0-9, A-F).');
+                return;
+            }
+
+            // Convert MAC address to reversed byte array
+            const reversedByteArray = new Uint8Array(macAddress.match(/.{1,2}/g).map(byte => parseInt(byte, 16)).reverse());
+            console.log('Reversed Byte Array:', reversedByteArray);
+            status.textContent = 'Searching for devices...';
+
+            try {
+                const device = await navigator.bluetooth.requestDevice({
+                    filters: [{
+                        manufacturerData: [{
+                            companyIdentifier: 0x0101,
+                            dataPrefix: reversedByteArray
+                        }]
+                    }]
+                });
+                status.textContent = `Device selected: ${device.name}`;
+            } catch (error) {
+                status.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
