@@ -53,6 +53,7 @@ see BluetoothLowEnergyAdvertising/demo directory
    git clone https://github.com/Rao-96/BluetoothLowEnergyAdvertising.git
    cd BluetoothLowEnergyAdvertising/esp32-firmware
 
+
 ##Future work
 1.disconnect from current device if not same previous number not advertised.
 2.toggle connection between 2 host devices using 2 unique numbers.
