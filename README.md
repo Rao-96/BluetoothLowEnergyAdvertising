@@ -21,9 +21,12 @@ Lets say Bluetooth device need to uniquely identify and pair to a host machine.
   - Filters devices based on specific manufacturar id and unique number.
   - Displays relevant device details in real time.
 
----
 
----
+
+
+## 📸 Demo (Screenshots or Video)
+
+
 
 ## 🧩 Tech Stack
 
