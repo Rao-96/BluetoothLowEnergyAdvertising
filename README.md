@@ -55,5 +55,5 @@ see BluetoothLowEnergyAdvertising/demo directory
 
 
 ## Future work
-1.disconnect from current device if not same previous number not advertised.
-2.toggle connection between 2 host devices using 2 unique numbers.
+ - disconnect from current device if not same previous number not advertised.
+ - toggle connection between 2 host devices using 2 unique numbers.
