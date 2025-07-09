@@ -25,7 +25,7 @@ Lets say Bluetooth device need to uniquely identify and pair to a host machine.
 
 
 ## 📸 Demo (Screenshots or Video)
-
+see BluetoothLowEnergyAdvertising/demo directory
 
 
 ## 🧩 Tech Stack
